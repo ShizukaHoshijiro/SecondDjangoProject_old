@@ -1,0 +1,15 @@
+
+
+{% if user.is_authenticated %}
+    <div class="auth_user">
+
+        <span class="user_name">{{ user.username }}</span>
+        <a href="{% url "main_blog:logout" %}?next={{ request.path }}">Logout</a>
+
+    </div>
+{% else %}
+    <div class="not_auth_user">
+    <a href="{% url "main_blog:login" %}?next={{ request.path }}">Login</a>
+    <a href="">Registration</a>
+    </div>
+{% endif %}

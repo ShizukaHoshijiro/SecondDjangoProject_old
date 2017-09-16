@@ -1,0 +1,59 @@
+{% extends "main_blog/main_pattern.html" %}
+
+{% block title %} {{ article.article_title }} {% endblock %}
+
+{% block extra_head %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "main_blog/detail.css" %}">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="detail_title">
+    {{ article.article_title }}
+    </div>
+    <div class="detail_text">
+    {{ article.article_text }}
+    </div>
+    <div class="detail_pub">
+    {{ article.pub_date |date:"d.m.y - H.i"}}
+    </div>
+
+
+    <label for="like_button_id" class="like_form_label">
+    <div class="detail_rating">
+        {# {{ article.article_rating.count }} #}
+        {% include "main_blog/parts/like_form.html" %}
+    </div>
+    </label>
+
+
+    <div class="detail_author">
+    Created by: {{ article.author }}
+    </div>
+
+
+    <div class="detail_comment_form">
+    {% include "main_blog/parts/comment_form.html" %}
+    </div>
+
+    <div class="detail_comment_list">
+    {# comment_set.all - это пиздец как, сука, важно, для того чтобы получить все объекты #}
+    {% for comment in article.comment_set.all %}
+        <div class="detail_comment">
+
+        <div class="detail_comment_text">
+        {{ comment.comment_text }}
+        </div>
+
+        <div class="detail_comment_author">
+        {{ comment.author }}
+        </div>
+
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

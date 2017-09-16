@@ -1,0 +1,14 @@
+{% extends "main_blog/main_pattern.html" %}
+
+{% block title %} New post {% endblock %}
+
+{% block content %}
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ form.article_title }}
+    {{ form.article_text }}
+    <input type="submit">
+</form>
+
+{% endblock %}

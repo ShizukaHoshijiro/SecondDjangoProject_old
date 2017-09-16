@@ -1,0 +1,13 @@
+{# Need comment_form context(CommentForm class) to work #}
+
+{% if user.is_authenticated %}
+    <form action="{% url "main_blog:add_comment" %}" method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ comment_form.comment_text }}
+    <div class="div_comment_form_submit_button">
+    <input class="comment_form_submit_button" type="submit">
+    </div>
+    <input type="hidden" name="pk" value="{{ article.pk }}">
+    <input type="hidden" name="next" value="{{ request.path }}">
+    </form>
+{% endif %}

@@ -1,0 +1,34 @@
+
+
+
+
+<form method="post" action="{% url "like_app:add_like" %}">
+
+    {% csrf_token %}
+
+    {{ article.article_rating.likes.count }}
+
+    <input class="like_form_button" id="like_button_id" type="submit">
+
+    <input type="hidden" name="model_type" value="article"> {# Name of class #}
+    <input type="hidden" name="item_id" value="{{ article.id }}"> {# Item id #}
+    <input type="hidden" name="next" value="{{ request.path }}">
+
+</form>
+
+
+
+<!-- OLD
+<form method="post" action="{% url "main_blog:add_rating" %}">
+    {% csrf_token %}
+
+    {# {{ article.article_rating.count }} #}
+
+    <!-- <div class="like_button_span"> {# {{ article.article_rating.count }} #} </div> ->
+
+    <input class="like_form_button" id="like_button_id" type="submit">
+    <input type="hidden" name="article_id" value="{{ article.id }}">
+    <input type="hidden" name="next" value="{{ request.path }}">
+</form>
+-->
+

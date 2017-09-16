@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} Blog {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static "main_blog/main_pattern.css" %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% block main_body %}
+
+        <header>
+        {% block header %} {% include "main_blog/parts/header.html" %} {% endblock %}
+        </header>
+
+        <main>
+        {% block content %}  {% endblock %}
+        </main>
+
+        <footer>
+        {% block footer %} {% include "main_blog/parts/footer.html" %} {% endblock %}
+        </footer>
+
+    {% endblock %}
+</body>
+</html>

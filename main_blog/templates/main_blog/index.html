@@ -1,0 +1,39 @@
+{% extends "main_blog/main_pattern.html" %}
+
+{% block title %} Index {% endblock %}
+
+{% block extra_head %}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "main_blog/index.css" %}">
+
+{% endblock %}
+
+{% block content %}
+
+    <h1>List of 60th last Article</h1>
+
+    <form action="">
+
+        <!--
+        <select name="sort_field">
+            <option value="-pub_date">По дате</option>
+            <option value="article_rating">По популярности</option>
+        </select>
+        <input type="text" name="search_field">
+        -->
+
+        {{ form.search }}
+        {{ form.sort_field }}
+
+        <input type="submit">
+    </form>
+
+    {% for article in article_list %}
+
+        <a class="articles" id="{{ article.id }}" href="{% url "main_blog:detail" article.id %}"><h2>{{article.article_title}}</h2></a>
+
+
+    {% endfor %}
+
+{% endblock %}

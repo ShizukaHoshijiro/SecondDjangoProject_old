@@ -1,0 +1,10 @@
+
+    <div class="inside_header">
+    <nav>
+    <a class="a_index" href="{% url "main_blog:index" %}">Index page</a>
+    <a class="a_index" href="{% url "main_blog:add" %}">Adding page</a>
+    </nav>
+    <div class="current_user">
+    {% include "main_blog/parts/current_user.html" %}
+    </div>
+    </div>
