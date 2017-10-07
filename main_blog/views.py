@@ -102,8 +102,6 @@ class AddNewComment(generic.CreateView):
 
         return super(AddNewComment, self).form_valid(form)
 
-# add_like я проебал :C
-
 def add_rating_for_article(request):
     article_id = request.POST.get("article_id")
     article = get_object_or_404(Article, pk=article_id)
